@@ -113,6 +113,12 @@
             "label": "PASSWORD",
             "default": "guest",
             "description": "Api user password"
+            },
+            {
+            "name": "SCRAPING_ENABLED",
+            "label": "SCRAPING_ENABLED",
+            "default": "false",
+            "description": "Automatic scraping each minute"
             }
         ]
     }
