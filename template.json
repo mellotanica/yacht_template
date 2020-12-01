@@ -1,0 +1,89 @@
+[
+    {
+        "type": 1,
+        "title": "AriaNG",
+        "name": "ariang",
+        "description": "Aria2 with Web UI",
+        "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/transmission-icon.png",
+        "image": "wahyd4/aria2-ui:latest",
+        "note": "",
+        "categories": [
+            "Downloaders",
+            "Tools"
+        ],
+        "platform": "linux",
+        "restart_policy": "unless-stopped",
+        "ports": [
+            {
+                "WebUI": "12080:80/tcp",
+                "WebUI SSL": "12443:443/tcp"
+            }
+        ],
+        "network_mode": "bridge",
+        "volumes": [
+            {
+            "container": "/data",
+            "bind": "!downloads"
+            },
+            {
+            "container": "/app/conf",
+            "bind": "!config/Aria/conf"
+            },
+            {
+            "container": "/app/filebrowser.db",
+            "bind": "!config/Aria/filebrowser.db"
+            }
+        ],
+        "sysctls": [
+            {
+            "net.ipv6.conf.all.disable_ipv6": "0"
+            }
+        ],
+        "cap_add": [
+            "NET_ADMIN"
+        ],
+        "env": [
+            {
+            "name": "PUID",
+            "label": "PUID",
+            "default": "!PUID"
+            },
+            {
+            "name": "PGID",
+            "label": "PGID",
+            "default": "!PGID"
+            },
+            {
+            "name": "ENABLE_AUTH",
+            "label": "ENABLE_AUTH",
+            "description": "Enable basic authentication",
+            "default": "false"
+            },
+            {
+            "name": "RPC_SECRET",
+            "label": "RPC_SECRET",
+            "description": "The Aria2 RPC secret token",
+            "default": "ariatoken"
+            },
+            {
+            "name": "ARIA2_USER",
+            "label": "ARIA2_USER",
+            "description": "Basic Auth username, Rclone GUI uses it as well",
+            "default": "ariauser"
+            },
+            {
+            "name": "ARIA2_PWD",
+            "label": "ARIA2_PWD",
+            "description": "Basic Auth password, Rclone GUI uses it as well",
+            "default": "ariapw"
+            },
+            {
+            "name": "DOMAIN",
+            "label": "DOMAIN",
+            "description": "The domain you'd like to bind, when domain is a https:// thing, then auto SSL feature will be enabled",
+            "default": ""
+            }
+        ]
+    }
+]
+]
