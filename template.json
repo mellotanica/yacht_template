@@ -4,8 +4,8 @@
         "title": "AriaNG",
         "name": "ariang",
         "description": "Aria2 with Web UI",
-        "logo": "https://gitlab.com/mellotanica/yacht_template/-/raw/master/content/arialogo.png",
-        "image": "wahyd4/aria2-ui:latest",
+        "logo": "https://raw.githubusercontent.com/mayswind/AriaNg-Native/master/assets/AriaNg.ico",
+        "image": "hurlenko/aria2-ariang:latest",
         "note": "",
         "categories": [
             "Downloaders",
@@ -15,23 +15,18 @@
         "restart_policy": "unless-stopped",
         "ports": [
             {
-                "WebUI": "12080:80/tcp",
-                "WebUI SSL": "12443:443/tcp"
+                "WebUI": "12080:8080/tcp"
             }
         ],
         "network_mode": "bridge",
         "volumes": [
             {
-            "container": "/data",
+            "container": "/aria2/data",
             "bind": "!downloads"
             },
             {
-            "container": "/app/conf",
-            "bind": "!config/Aria/conf"
-            },
-            {
-            "container": "/app/filebrowser.db",
-            "bind": "!config/Aria/filebrowser.db"
+            "container": "/aria2/conf",
+            "bind": "!config/Aria"
             }
         ],
         "sysctls": [
@@ -54,28 +49,22 @@
             "default": "!PGID"
             },
             {
-            "name": "ENABLE_AUTH",
-            "label": "ENABLE_AUTH",
-            "description": "Enable basic authentication",
-            "default": "false"
+            "name": "ARIA2RPCPORT",
+            "label": "ARIA2RPCPORT",
+            "description": "The port that will be used for rpc calls to aria2. Usually you want to set it to the port your website is running on. For example if your AriaNg instance is accessible on https://ariang.mysite.com you need to set ARIA2RPCPORT to 443 (default https port), otherwise AriaNg won't be able to access aria2 rpc running on the default port 8080. You can set the port in the web ui by going to AriaNg Settings > Rpc tab > Aria2 RPC Address field, and changing the default rpc port to whatever you need, but this has to be done per browser.",
+            "default": "12080"
+            },
+            {
+            "name": "DOMAIN",
+            "label": "DOMAIN",
+            "description": "The domain you'd like to bind to (Default: 0.0.0.0:8080)",
+            "default": ""
             },
             {
             "name": "RPC_SECRET",
             "label": "RPC_SECRET",
-            "description": "The Aria2 RPC secret token",
-            "default": "ariatoken"
-            },
-            {
-            "name": "ARIA2_USER",
-            "label": "ARIA2_USER",
-            "description": "Basic Auth username, Rclone GUI uses it as well",
-            "default": "ariauser"
-            },
-            {
-            "name": "ARIA2_PWD",
-            "label": "ARIA2_PWD",
-            "description": "Basic Auth password, Rclone GUI uses it as well",
-            "default": "ariapw"
+            "description": "The Aria2 RPC secret token (Default: not set)",
+            "default": ""
             }
         ]
     }
