@@ -4,7 +4,7 @@
         "title": "AriaNG",
         "name": "ariang",
         "description": "Aria2 with Web UI",
-        "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/transmission-icon.png",
+        "logo": "https://gitlab.com/mellotanica/yacht_template/-/raw/master/content/arialogo.png",
         "image": "wahyd4/aria2-ui:latest",
         "note": "",
         "categories": [
