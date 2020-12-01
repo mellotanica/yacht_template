@@ -76,12 +76,6 @@
             "label": "ARIA2_PWD",
             "description": "Basic Auth password, Rclone GUI uses it as well",
             "default": "ariapw"
-            },
-            {
-            "name": "DOMAIN",
-            "label": "DOMAIN",
-            "description": "The domain you'd like to bind, when domain is a https:// thing, then auto SSL feature will be enabled",
-            "default": ""
             }
         ]
     }
