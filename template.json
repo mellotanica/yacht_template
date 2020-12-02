@@ -121,5 +121,51 @@
             "description": "Automatic scraping each minute"
             }
         ]
+    },
+    {
+        "type": 1,
+        "title": "NSZ extractor",
+        "name": "nsz-extractor",
+        "description": "NSZ automatic extraction/organization tool",
+        "logo": "https://github.com/mellotanica/yacht_template/raw/master/assets/nut.png",
+        "image": "mellotanica/nsz-extractor:latest",
+        "note": "",
+        "categories": [
+            "Tools"
+        ],
+        "platform": "linux",
+        "restart_policy": "unless-stopped",
+        "volumes": [
+            {
+            "container": "/compressed",
+            "bind": "!downloads"
+            },
+            {
+            "container": "/extracted",
+            "bind": "!games"
+            },
+            {
+            "container": "/opt/switch",
+            "bind": "!config/nsz"
+            }
+        ],
+        "env": [
+            {
+            "name": "PUID",
+            "label": "PUID",
+            "default": "!PUID"
+            },
+            {
+            "name": "PGID",
+            "label": "PGID",
+            "default": "!PGID"
+            },
+            {
+            "name": "DELETE",
+            "label": "DELETE",
+            "default": "false",
+            "description": "Delete NSZ files after correct extraction"
+            }
+        ]
     }
 ]
