@@ -128,7 +128,7 @@
         "name": "nsz-extractor",
         "description": "NSZ automatic extraction/organization tool",
         "logo": "https://github.com/mellotanica/yacht_template/raw/master/assets/nut.png",
-        "image": "mellotanica/nsz-extractor:latest",
+        "image": "mellotanica/nsz-autoextract:latest",
         "note": "",
         "categories": [
             "Tools"
