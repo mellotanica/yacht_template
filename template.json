@@ -135,6 +135,7 @@
         ],
         "platform": "linux",
         "restart_policy": "unless-stopped",
+        "ports": [],
         "volumes": [
             {
             "container": "/compressed",
