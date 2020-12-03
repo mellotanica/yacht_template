@@ -164,8 +164,14 @@
             {
             "name": "DELETE",
             "label": "DELETE",
-            "default": "false",
+            "default": "true",
             "description": "Delete NSZ files after correct extraction"
+            },
+            {
+            "name": "MODE",
+            "label": "MODE",
+            "default": "compress",
+            "description": "Execution mode, can be 'move', 'compress', 'extract'"
             }
         ]
     }
