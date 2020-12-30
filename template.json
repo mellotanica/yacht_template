@@ -135,7 +135,9 @@
         ],
         "platform": "linux",
         "restart_policy": "unless-stopped",
-        "ports": [],
+        "ports": [
+            ""
+        ],
         "volumes": [
             {
             "container": "/compressed",
@@ -189,7 +191,9 @@
         ],
         "platform": "linux",
         "restart_policy": "unless-stopped",
-        "ports": [],
+        "ports": [
+            ""
+        ],
         "volumes": [
             {
             "container": "/mnt/source",
