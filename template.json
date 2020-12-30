@@ -174,5 +174,59 @@
             "description": "Execution mode, can be 'move', 'compress', 'extract'"
             }
         ]
+    },
+    {
+        "type": 1,
+        "title": "borgmatic",
+        "name": "borgmatic",
+        "description": "borgmatic image with automatic backup schedules",
+        "logo": "https://github.com/mellotanica/yacht_template/raw/master/assets/borgmatic.png",
+        "image": "mellotanica/borgmatic:latest",
+        "note": "",
+        "categories": [
+            "Tools",
+            "Backup"
+        ],
+        "platform": "linux",
+        "restart_policy": "unless-stopped",
+        "ports": [],
+        "volumes": [
+            {
+            "container": "/mnt/source",
+            "description": "Root directory to backup"
+            },
+            {
+            "container": "/mnt/borg-repository",
+            "description": "Borg repository"
+            },
+            {
+            "container": "/etc/borgmatic.d",
+            "bind": "!config/borgmatic/config"
+            },
+            {
+            "container": "/root/.config/borg",
+            "bind": "!config/borgmatic/borgcfg"
+            },
+            {
+            "container": "/root/.cache/borg",
+            "bind": "!config/borgmatic/cache"
+            }
+        ],
+        "env": [
+            {
+            "name": "TZ",
+            "label": "TZ",
+            "default": "!TZ"
+            },
+            {
+            "name": "BORG_PASSPHRASE",
+            "label": "BORG_PASSPHRASE",
+            "description": "Set the repository passphrase"
+            },
+            {
+            "name": "BORG_RSH",
+            "label": "BORG_RSH"
+            }
+        ]
     }
 ]
