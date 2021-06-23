@@ -177,6 +177,130 @@
     },
     {
         "type": 1,
+        "title": "OpenVPN Access Server",
+        "name": "openvpn-as",
+        "description": "OpenVPN Access Server is a full featured secure network tunneling VPN software solution that integrates OpenVPN server capabilities, enterprise management capabilities, simplified OpenVPN Connect UI, and OpenVPN Client software packages that accommodate Windows, MAC, Linux, Android, and iOS environments.",
+        "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/openvpn-as-icon.png",
+        "image": "mellotanica/openvpn-as:latest",
+        "categories": [
+            "Other"
+        ],
+        "platform": "linux",
+        "restart_policy": "unless-stopped",
+        "ports": [
+            {
+                "WebUI": "943:943/tcp",
+                "VPN TCP": "9443:9443/tcp",
+                "VPN UDP": "1194:1194/udp"
+            }
+        ],
+        "volumes": [
+            {
+                "container": "/config",
+                "bind": "!config/OpenVPN-AS"
+            }
+        ],
+        "env": [
+            {
+                "name": "INTERFACE",
+                "label": "INTERFACE",
+                "default": "eth0"
+            },
+            {
+                "name": "PUID",
+                "label": "PUID",
+                "default": "!PUID"
+            },
+            {
+                "name": "PGID",
+                "label": "PGID",
+                "default": "!PGID"
+            }
+        ]
+    },
+    {
+        "type": 1,
+        "title": "Wireguard",
+        "name": "wireguard",
+        "description": "Extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography.",
+        "logo": "https://github.com/mellotanica/yacht_template/raw/master/assets/wireguard.png",
+        "image": "linuxserver/wireguard:latest",
+        "note": "",
+        "categories": [
+            "Tools",
+            "Network"
+        ],
+        "platform": "linux",
+        "restart_policy": "unless-stopped",
+        "ports": [
+            {
+                "VPN UDP": "51820:51820/udp"
+            }
+        ],
+        "cap_add": [
+            "NET_ADMIN",
+            "SYS_MODULE"
+        ],
+        "sysctls": [
+            {
+            "net.ipv4.conf.all.src_valid_mark": "1"
+            }
+        ],
+        "volumes": [
+            {
+                "container": "/config",
+                "bind": "!config/Wireguard/cfg"
+            },
+            {
+                "container": "/lib/modules",
+                "bind": "!config/Wireguard/modules"
+            }
+        ],
+        "env": [
+            {
+                "name": "SERVERURL",
+                "label": "SERVERURL",
+                "default": ""
+            },
+            {
+                "name": "SERVERPORT",
+                "label": "SERVERPORT",
+                "default": ""
+            },
+            {
+                "name": "PEERS",
+                "label": "PEERS",
+                "default": "1"
+            },
+            {
+                "name": "PEERDNS",
+                "label": "PEERDNS",
+                "default": "auto"
+            },
+            {
+                "name": "INTERNAL_SUBNET",
+                "label": "INTERNAL_SUBNET",
+                "default": "10.13.13.0"
+            },
+            {
+                "name": "ALLOWEDIPS",
+                "label": "ALLOWEDIPS",
+                "default": "0.0.0.0/0"
+            },
+            {
+                "name": "PUID",
+                "label": "PUID",
+                "default": "!PUID"
+            },
+            {
+                "name": "PGID",
+                "label": "PGID",
+                "default": "!PGID"
+            }
+        ]
+    },
+    {
+        "type": 1,
         "title": "borgmatic",
         "name": "borgmatic",
         "description": "borgmatic image with automatic backup schedules",
